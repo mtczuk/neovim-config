@@ -57,23 +57,9 @@ end, {})
 
 
 
--- Show all diagnostics on current line in floating window
-vim.api.nvim_set_keymap(
-'n', '<Leader>ds', ':lua vim.diagnostic.open_float()<CR>', 
-{ noremap = true, silent = true }
-)
--- Go to next diagnostic (if there are multiple on the same line, only shows
--- one at a time in the floating window)
-vim.api.nvim_set_keymap(
-'n', '<Leader>dn', ':lua vim.diagnostic.goto_next()<CR>',
-{ noremap = true, silent = true }
-)
--- Go to prev diagnostic (if there are multiple on the same line, only shows
--- one at a time in the floating window)
-vim.api.nvim_set_keymap(
-'n', '<Leader>dp', ':lua vim.diagnostic.goto_prev()<CR>',
-{ noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap( 'n', '<Leader>ds', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap( 'n', '<Leader>dn', ':lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap( 'n', '<Leader>dp', ':lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n','tn', ':tabnew<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','tj', ':tabprevious<CR>', { noremap = true, silent = true })
@@ -206,37 +192,7 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local telescope = require("telescope")
-      telescope.setup({
-        defaults = {
-          file_ignore_patterns = {
-            "node_modules",
-            ".git",
-            "target",
-            "dist",
-            ".dart_tool",
-            "android",
-            "build",
-            "ios",
-            "web"
-          },
-          path_display = { "truncate" },
-        },
-        pickers = {
-          find_files = {
-            hidden = true
-          }
-        }
-      })
-
-      -- Telescope keymaps
-      local builtin = require("telescope.builtin")
-
-      vim.keymap.set("n", "<leader>ff", builtin.find_files)
-      vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-      vim.keymap.set("n", "<leader>fb", builtin.buffers)
-      vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-      vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
+      require('plugins.telescope').setup()
     end,
   },
   {
