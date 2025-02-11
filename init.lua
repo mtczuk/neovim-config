@@ -70,18 +70,6 @@ vim.api.nvim_set_keymap('n','th', ':tabfirst<CR>', { noremap = true, silent = tr
 vim.api.nvim_set_keymap('n','<leader>bc', ':bp|bd #<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>bp', ':bp<CR>', { noremap = true, silent = true })
 
-
--- Helper function to get visual selection
-local utils = {}
-function utils.get_visual_selection()
-  local s_start = vim.fn.getpos("'<")
-  local s_end = vim.fn.getpos("'>")
-  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-  return table.concat(lines, '\n')
-end
-
-
-
 local function setup_lsp_keymaps(client, bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
@@ -191,9 +179,7 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require('plugins.telescope').setup()
-    end,
+    config = require('plugins.telescope').setup,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -231,9 +217,7 @@ require("lazy").setup({
       "MunifTanjim/nui.nvim",
       -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    config = function()
-      require('plugins.neotree').setup()
-    end
+    config = require('plugins.neotree').setup
   },
   { 
     "catppuccin/nvim", 
