@@ -70,25 +70,6 @@ vim.api.nvim_set_keymap('n','th', ':tabfirst<CR>', { noremap = true, silent = tr
 vim.api.nvim_set_keymap('n','<leader>bc', ':bp|bd #<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n','<leader>bp', ':bp<CR>', { noremap = true, silent = true })
 
-local function setup_lsp_keymaps(client, bufnr)
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr })
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
-
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format()
-    end,
-  })
-end
-
-
 require("lazy").setup({
   {
     'nvim-flutter/flutter-tools.nvim',
@@ -104,7 +85,7 @@ require("lazy").setup({
         },
         lsp = {
           on_attach = function(client, bufnr)
-            setup_lsp_keymaps(client, bufnr)
+            require('shared.setup_lsp_keymaps').execute(bufnr)
           end
         }
       }
@@ -127,7 +108,7 @@ require("lazy").setup({
         require("lspconfig")[lsp].setup({
           capabilities = capabilities,
           on_attach = function(client, bufnr)
-            setup_lsp_keymaps(client, bufnr)
+            require('shared.setup_lsp_keymaps').execute(bufnr)
           end,
           settings = {
             eslint = {
