@@ -17,6 +17,9 @@ function M.setup()
       symlink_target = { enabled = false },
     },
   })
+
+  vim.keymap.set('n', '<leader>tf', ':Neotree reveal_force_cwd<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '\\', ':Neotree toggle<CR>', { noremap = true, silent = true })
 end
 
 return M

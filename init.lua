@@ -33,9 +33,6 @@ vim.keymap.set('n', '<C-j>', '4j', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-k>', '4k', { noremap = true, silent = true })
 -- vim.keymap.set('n', 's', ':HopWord<CR>', { noremap = true, silent = true })
 
-vim.keymap.set('n', '<leader>tf', ':Neotree reveal_force_cwd<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '\\', ':Neotree toggle<CR>', { noremap = true, silent = true })
-
 vim.keymap.set('n', 's', function()
   require('hop').hint_char1()
 end, { noremap = true, silent = true })
