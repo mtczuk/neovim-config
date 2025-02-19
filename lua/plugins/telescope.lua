@@ -32,7 +32,9 @@ function M.setup()
 	vim.keymap.set("n", "<leader>fb", builtin.buffers)
 	vim.keymap.set("n", "<leader>fh", builtin.help_tags)
 	vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
-	vim.keymap.set("n", "<leader>fj", ":Neogit<CR>")
+	vim.keymap.set("n", "<leader>fj", function()
+		require("neogit").open({ kind = "floating" })
+	end)
 end
 
 return M
