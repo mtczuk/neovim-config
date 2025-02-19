@@ -10,12 +10,12 @@ function M.execute(bufnr)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
   vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr })
 
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format()
-    end,
-  })
+  -- vim.api.nvim_create_autocmd("BufWritePre", {
+  --   buffer = bufnr,
+  --   callback = function()
+  --     vim.lsp.buf.format()
+  --   end,
+  -- })
 end
 
 return M

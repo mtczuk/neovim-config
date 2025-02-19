@@ -3,6 +3,16 @@ local M = {}
 function M.setup()
   local neotree = require('neo-tree')
   neotree.setup({
+    event_handlers = {
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function(arg)
+          vim.cmd [[
+            setlocal relativenumber
+          ]]
+        end,
+      }
+    },
     filesystem = {
       follow_current_file = { enabled = false, leave_dirs_open = false },
     },
