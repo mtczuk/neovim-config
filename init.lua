@@ -32,6 +32,9 @@ vim.keymap.set("n", "z", "zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<c-e>", "4<c-e>", { noremap = true, silent = true })
 vim.keymap.set("n", "<c-y>", "4<c-y>", { noremap = true, silent = true })
 
+vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
+
 -- vim.keymap.set('t', '<c-n><c-c>', '<C-\\><C-n>')
 vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
 
@@ -45,15 +48,15 @@ vim.api.nvim_create_user_command("PwdCopy", function()
 end, {})
 
 vim.keymap.set("n", "s", function()
-	require("hop").hint_char1()
+	require("hop").hint_char2()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>s", function()
-	require("hop").hint_char1()
+	require("hop").hint_char2()
 end, { noremap = true, silent = true })
 
 vim.keymap.set("v", "s", function()
-	require("hop").hint_char1()
+	require("hop").hint_char2()
 end, { noremap = true, silent = true })
 
 vim.api.nvim_create_user_command("Reload", function()
@@ -144,7 +147,7 @@ require("lazy").setup({
 	{
 		"Mofiqul/vscode.nvim",
 		config = function()
-			-- require('vscode').load('dark')
+			require('vscode').load('dark')
 		end,
 	},
 	{
@@ -175,59 +178,13 @@ require("lazy").setup({
 			keys = "etovxqpdygfblzhckisuran",
 		},
 	},
-	{
-		"axkirillov/easypick.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			local easypick = require("easypick")
-			easypick.setup({
-				pickers = {
-					{ name = "ls", command = "ls", previewer = easypick.previewers.default() },
-					{
-						name = "changed_files",
-						command = "git status --porcelain --untracked-files=all | awk '{print $2}'",
-						previewer = easypick.previewers.branch_diff(),
-					},
-					{
-						name = "conflicts",
-						command = "git diff --name-only --diff-filter=U --relative",
-						previewer = easypick.previewers.file_diff(),
-					},
-				},
-			})
-		end,
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {},
-		config = function()
-			local prettier = { "prettierd", "prettier", stop_after_first = true }
-
-			require("conform").setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					dart = { lsp_format = "prefer" },
-					javascript = prettier,
-					javascriptreact = prettier,
-					typescript = prettier,
-					typescriptreact = prettier,
-					vue = prettier,
-				},
-			})
-
-			vim.api.nvim_create_user_command("Format", function(args)
-				require("conform").format({ bufnr = args.buf })
-			end, {})
-
-			vim.api.nvim_set_keymap("n", "<leader>fm", ":Format<CR>", { noremap = true, silent = true })
-		end,
-	},
+	require("plugins.conform"),
 	require("plugins.neogit"),
 	require("plugins.dap"),
 	{
 		"bluz71/vim-moonfly-colors",
 		config = function()
-			vim.cmd.colorscheme("moonfly")
+			-- vim.cmd.colorscheme("moonfly")
 		end,
 	},
 })
