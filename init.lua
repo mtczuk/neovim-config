@@ -26,17 +26,7 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-live-grep-args.nvim" },
 		config = require("plugins.telescope").setup,
 	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "python", "javascript", "typescript", "rust" },
-				auto_install = true,
-				highlight = { enable = true },
-			})
-		end,
-	},
+	require('plugins.treesitter'),
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
