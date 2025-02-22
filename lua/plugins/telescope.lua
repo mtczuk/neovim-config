@@ -2,6 +2,7 @@ local M = {}
 
 function M.setup()
 	local telescope = require("telescope")
+
 	telescope.setup({
 		defaults = {
 			file_ignore_patterns = {
@@ -23,6 +24,8 @@ function M.setup()
 			},
 		},
 	})
+
+	telescope.load_extension("live_grep_args")
 
 	-- Telescope keymaps
 	local builtin = require("telescope.builtin")
