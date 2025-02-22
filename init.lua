@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('general').setup()
+require("general").setup()
 
 require("lazy").setup({
 	require("plugins.flutter"),
@@ -26,8 +26,8 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-live-grep-args.nvim" },
 		config = require("plugins.telescope").setup,
 	},
-	require('plugins.treesitter'),
-	require('plugins.lualine'),
+	require("plugins.treesitter"),
+	require("plugins.lualine"),
 	require("plugins.neotree"),
 	{
 		"catppuccin/nvim",
@@ -43,21 +43,7 @@ require("lazy").setup({
 			require("vscode").load("dark")
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "ts_ls", "rust_analyzer", "eslint" },
-				automatic_installation = true,
-			})
-		end,
-	},
+	require("plugins.mason"),
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
