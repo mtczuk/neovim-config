@@ -21,11 +21,7 @@ require("lazy").setup({
 		"hrsh7th/nvim-cmp",
 		config = require("plugins.nvimcmp").setup,
 	},
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-live-grep-args.nvim" },
-		config = require("plugins.telescope").setup,
-	},
+	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	require("plugins.lualine"),
 	require("plugins.neotree"),

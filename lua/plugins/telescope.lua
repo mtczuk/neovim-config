@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
 	local telescope = require("telescope")
 
 	telescope.setup({
@@ -40,4 +38,10 @@ function M.setup()
 	end)
 end
 
-return M
+return {
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-live-grep-args.nvim" },
+		config = setup,
+	},
+}
