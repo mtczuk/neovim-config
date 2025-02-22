@@ -29,20 +29,6 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.lualine"),
 	require("plugins.neotree"),
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		config = function()
-			-- vim.cmd.colorscheme("catppuccin")
-		end,
-	},
-	{
-		"Mofiqul/vscode.nvim",
-		config = function()
-			require("vscode").load("dark")
-		end,
-	},
 	require("plugins.mason"),
 	{
 		"lewis6991/gitsigns.nvim",
@@ -60,10 +46,5 @@ require("lazy").setup({
 	require("plugins.conform"),
 	require("plugins.neogit"),
 	require("plugins.dap"),
-	{
-		"bluz71/vim-moonfly-colors",
-		config = function()
-			-- vim.cmd.colorscheme("moonfly")
-		end,
-	},
+	require("plugins.colors"),
 })
