@@ -17,10 +17,7 @@ require("general").setup()
 require("lazy").setup({
 	require("plugins.flutter"),
 	require("plugins.lsp"),
-	{
-		"hrsh7th/nvim-cmp",
-		config = require("plugins.nvimcmp").setup,
-	},
+	require("plugins.nvimcmp"),
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	require("plugins.lualine"),
