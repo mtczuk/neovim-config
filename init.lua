@@ -95,7 +95,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	require('plugins.lsp'),
+	require("plugins.lsp"),
 	{
 		"hrsh7th/nvim-cmp",
 		config = require("plugins.nvimcmp").setup,
@@ -222,19 +222,7 @@ require("lazy").setup({
 			vim.api.nvim_set_keymap("n", "<leader>fm", ":Format<CR>", { noremap = true, silent = true })
 		end,
 	},
-	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-
-			-- Only one of these is needed.
-			"nvim-telescope/telescope.nvim", -- optional
-			"ibhagwan/fzf-lua", -- optional
-			"echasnovski/mini.pick", -- optional
-		},
-		config = true,
-	},
+	require("plugins.neogit"),
 	{
 		"mfussenegger/nvim-dap",
 		dependencies = {
@@ -300,10 +288,10 @@ require("lazy").setup({
 			map("n", "<Leader>dh", ":DapHelp<CR>", opt) -- Help
 		end,
 	},
-  {
-    "bluz71/vim-moonfly-colors",
-    config = function()
+	{
+		"bluz71/vim-moonfly-colors",
+		config = function()
 			vim.cmd.colorscheme("moonfly")
-    end,
-  }
+		end,
+	},
 })
