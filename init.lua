@@ -27,22 +27,7 @@ require("lazy").setup({
 		config = require("plugins.telescope").setup,
 	},
 	require('plugins.treesitter'),
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("lualine").setup({
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff", "diagnostics" },
-					lualine_c = { "filename" },
-					lualine_x = { "encoding", "fileformat", "filetype" },
-					lualine_y = { "progress" },
-					lualine_z = { "location" },
-				},
-			})
-		end,
-	},
+	require('plugins.lualine'),
 	require("plugins.neotree"),
 	{
 		"catppuccin/nvim",
