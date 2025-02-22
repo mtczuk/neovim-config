@@ -78,26 +78,7 @@ vim.api.nvim_set_keymap("n", "<leader>bc", ":bp|bd #<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "<leader>bp", ":bp<CR>", { noremap = true, silent = true })
 
 require("lazy").setup({
-	{
-		"nvim-flutter/flutter-tools.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"stevearc/dressing.nvim", -- optional for vim.ui.select
-		},
-		config = function()
-			require("flutter-tools").setup({
-				widget_guides = {
-					enabled = true,
-				},
-				lsp = {
-					on_attach = function(client, bufnr)
-						require("shared.setup_lsp_keymaps").execute(bufnr)
-					end,
-				},
-			})
-		end,
-	},
+	require("plugins.flutter"),
 	require("plugins.lsp"),
 	{
 		"hrsh7th/nvim-cmp",
@@ -147,7 +128,7 @@ require("lazy").setup({
 	{
 		"Mofiqul/vscode.nvim",
 		config = function()
-			require('vscode').load('dark')
+			require("vscode").load("dark")
 		end,
 	},
 	{
