@@ -95,16 +95,7 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/nvim-cmp",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-		},
-		config = require("plugins.lsp").setup,
-	},
+	require('plugins.lsp'),
 	{
 		"hrsh7th/nvim-cmp",
 		config = require("plugins.nvimcmp").setup,
