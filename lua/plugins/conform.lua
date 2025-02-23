@@ -9,11 +9,13 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					dart = { lsp_format = "prefer" },
+					go = { lsp_format = "prefer" },
 					javascript = prettier,
 					javascriptreact = prettier,
 					typescript = prettier,
 					typescriptreact = prettier,
 					vue = prettier,
+					graphql = prettier,
 				},
 			})
 

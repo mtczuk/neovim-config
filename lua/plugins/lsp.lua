@@ -57,6 +57,11 @@ local function setup()
 		},
 	})
 
+  lspconfig.graphql.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+  })
+
 	lspconfig.volar.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
@@ -76,6 +81,11 @@ return {
 			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+		},
+		opts = {
+			servers = {
+				"graphql",
+			},
 		},
 		config = setup,
 	},

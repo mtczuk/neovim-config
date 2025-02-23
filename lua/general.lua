@@ -21,8 +21,8 @@ function M.setup()
 	vim.keymap.set("n", "<c-e>", "4<c-e>", { noremap = true, silent = true })
 	vim.keymap.set("n", "<c-y>", "4<c-y>", { noremap = true, silent = true })
 
-	vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, silent = true })
-	vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
+	-- vim.keymap.set("n", "q", ":q<CR>", { noremap = true, silent = true })
+	-- vim.keymap.set("n", "w", ":w<CR>", { noremap = true, silent = true })
 
 	-- vim.keymap.set('t', '<c-n><c-c>', '<C-\\><C-n>')
 	vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
@@ -36,16 +36,20 @@ function M.setup()
 		vim.notify("Current directory copied to clipboard!")
 	end, {})
 
+	function hopc()
+		require("hop").hint_char1()
+	end
+
 	vim.keymap.set("n", "s", function()
-		require("hop").hint_char2()
+		hopc()
 	end, { noremap = true, silent = true })
 
 	vim.keymap.set("n", "<leader>s", function()
-		require("hop").hint_char2()
+		hopc()
 	end, { noremap = true, silent = true })
 
 	vim.keymap.set("v", "s", function()
-		require("hop").hint_char2()
+		hopc()
 	end, { noremap = true, silent = true })
 
 	vim.api.nvim_create_user_command("Reload", function()

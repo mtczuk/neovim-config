@@ -37,7 +37,7 @@ require("lazy").setup({
 		},
 	},
 	require("plugins.conform"),
-	require("plugins.neogit"),
+	require("plugins.git"),
 	require("plugins.dap"),
 	require("plugins.colors"),
 })
