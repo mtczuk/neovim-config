@@ -8,6 +8,7 @@ return {
 		},
 		config = function()
 			require("flutter-tools").setup({
+        fvm = true,
 				widget_guides = {
 					enabled = true,
 				},

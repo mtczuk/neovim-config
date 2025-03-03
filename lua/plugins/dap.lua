@@ -52,6 +52,14 @@ return {
 				dap.repl.open()
 			end)
 
+			vim.api.nvim_create_user_command("DapStopOnExceptions", function()
+				dap.set_exception_breakpoints("default")
+			end, {})
+
+			vim.api.nvim_create_user_command("DapIgnoreExceptions", function()
+				dap.set_exception_breakpoints({})
+			end, {})
+
 			vim.api.nvim_set_keymap("n", "<leader>gl", ":e .vscode/launch.json<CR>", { noremap = true, silent = true })
 
 			dap.adapters.go = {
@@ -86,7 +94,18 @@ return {
 					-- The nvim-dap plugin populates this variable with the editor's current working directory
 					cwd = "${workspaceFolder}",
 					-- This gets forwarded to the Flutter CLI tool, substitute `linux` for whatever device you wish to launch
-					toolArgs = { "-d", "linux" },
+					-- toolArgs = { "-d", "linux" },
+				},
+				{
+					type = "dart",
+					request = "attach",
+					name = "Attach Flutter Program",
+					-- The nvim-dap plugin populates this variable with the filename of the current buffer
+					program = "${file}",
+					-- The nvim-dap plugin populates this variable with the editor's current working directory
+					cwd = "${workspaceFolder}",
+					-- This gets forwarded to the Flutter CLI tool, substitute `linux` for whatever device you wish to launch
+					-- toolArgs = { "-d", "linux" },
 				},
 			}
 

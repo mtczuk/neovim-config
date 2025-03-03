@@ -16,6 +16,7 @@ return {
 					typescriptreact = prettier,
 					vue = prettier,
 					graphql = prettier,
+					html = prettier,
 				},
 			})
 

@@ -15,7 +15,8 @@ function M.setup()
 	vim.opt.cursorline = true
 	vim.opt.smartcase = true
 	vim.opt.ignorecase = true -- Required for smartcase to work
-	-- vim.opt.termguicolors = true
+
+	vim.api.nvim_set_hl(0, "CursorLine", { underline = true })
 
 	vim.keymap.set("n", "z", "zz", { noremap = true, silent = true })
 	vim.keymap.set("n", "<c-e>", "4<c-e>", { noremap = true, silent = true })
@@ -25,7 +26,9 @@ function M.setup()
 	-- vim.keymap.set("n", "w", ":w<CR>", { noremap = true, silent = true })
 
 	-- vim.keymap.set('t', '<c-n><c-c>', '<C-\\><C-n>')
-	vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
+	-- vim.keymap.set("t", "<C-[>", "<C-\\><C-n>")
+	vim.keymap.set("t", "<C-j><C-k>", "<C-\\><C-n>")
+	vim.keymap.set("t", "<C-k><C-j>", "<C-\\><C-n>")
 
 	vim.keymap.set("n", "<C-j>", "4j", { noremap = true, silent = true })
 	vim.keymap.set("n", "<C-k>", "4k", { noremap = true, silent = true })
@@ -36,8 +39,12 @@ function M.setup()
 		vim.notify("Current directory copied to clipboard!")
 	end, {})
 
+	vim.api.nvim_create_user_command("CopyRelPath", function()
+		vim.api.nvim_call_function("setreg", { "+", vim.fn.fnamemodify(vim.fn.expand("%"), ":.") })
+	end, {})
+
 	function hopc()
-		require("hop").hint_char1()
+		require("hop").hint_char2()
 	end
 
 	vim.keymap.set("n", "s", function()
