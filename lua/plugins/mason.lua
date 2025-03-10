@@ -9,7 +9,15 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "pyright", "ts_ls", "rust_analyzer", "eslint", "graphql" },
+				ensure_installed = {
+					"pyright",
+					"ts_ls",
+					"rust_analyzer",
+					"eslint",
+					"graphql",
+					"volar",
+					"lua_ls",
+				},
 				automatic_installation = true,
 			})
 		end,
