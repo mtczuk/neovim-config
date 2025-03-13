@@ -53,16 +53,22 @@ return {
 			end)
 
 			vim.keymap.set("n", "<leader>fh", function()
-				require('harpoon.ui').toggle_quick_menu()
+				require("harpoon.ui").toggle_quick_menu()
 			end)
 
 			vim.keymap.set("n", "<leader>fj", function()
-				require('harpoon.ui').nav_next()
+				require("harpoon.ui").nav_next()
 			end)
 
 			vim.keymap.set("n", "<leader>fk", function()
-				require('harpoon.ui').nav_prev()
+				require("harpoon.ui").nav_prev()
 			end)
+
+			require("harpoon").setup({
+				menu = {
+					width = vim.api.nvim_win_get_width(0) - 4,
+				},
+			})
 		end,
 	},
 }
