@@ -12,13 +12,6 @@ return {
 					file_ignore_patterns = {
 						"node_modules",
 						".git",
-						"target",
-						"dist",
-						".dart_tool",
-						"android",
-						"build",
-						"ios",
-						"web",
 					},
 					path_display = { "truncate" },
 				},
