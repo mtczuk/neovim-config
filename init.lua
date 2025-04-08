@@ -42,6 +42,7 @@ require("lazy").setup({
 	require("plugins.colors"),
 	require("plugins.autopairs"),
 	require("plugins.tailwind"),
+	require("plugins.copilot"),
 })
 
 vim.api.nvim_set_hl(0, "CursorLine", { underline = true })
