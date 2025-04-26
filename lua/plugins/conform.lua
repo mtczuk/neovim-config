@@ -17,6 +17,7 @@ return {
 					vue = prettier,
 					graphql = prettier,
 					html = prettier,
+					json = prettier,
 				},
 			})
 

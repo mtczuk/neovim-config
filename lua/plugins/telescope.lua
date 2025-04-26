@@ -41,21 +41,27 @@ return {
 		"ThePrimeagen/harpoon",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			vim.keymap.set("n", "<leader>fl", function()
+			vim.keymap.set("n", "<C-l>", function()
 				require("harpoon.mark").add_file()
 			end)
 
-			vim.keymap.set("n", "<leader>fh", function()
-				require('harpoon.ui').toggle_quick_menu()
+			vim.keymap.set("n", "<C-h>", function()
+				require("harpoon.ui").toggle_quick_menu()
 			end)
 
-			vim.keymap.set("n", "<leader>fj", function()
-				require('harpoon.ui').nav_next()
+			vim.keymap.set("n", "<C-j>", function()
+				require("harpoon.ui").nav_next()
 			end)
 
-			vim.keymap.set("n", "<leader>fk", function()
-				require('harpoon.ui').nav_prev()
+			vim.keymap.set("n", "<C-k>", function()
+				require("harpoon.ui").nav_prev()
 			end)
+
+			require("harpoon").setup({
+				menu = {
+					width = vim.api.nvim_win_get_width(0) - 4,
+				},
+			})
 		end,
 	},
 }
