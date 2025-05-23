@@ -57,10 +57,15 @@ local function setup()
 		},
 	})
 
-  lspconfig.graphql.setup({
+	lspconfig.html.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
-  })
+	})
+
+	lspconfig.graphql.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 
 	lspconfig.volar.setup({
 		on_attach = on_attach,
