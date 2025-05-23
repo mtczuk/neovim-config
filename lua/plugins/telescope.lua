@@ -82,7 +82,19 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			vim.api.nvim_create_autocmd("TextChangedI", {
-				pattern = "*.dart",
+				pattern = {
+					"*.dart",
+					"*.ts",
+					"*.vue",
+					"*.gradle",
+					"*.json",
+					"*.js",
+					"*.html",
+					"*.swift",
+					"*.kt",
+					"*.yaml",
+					"*.yml",
+				},
 				callback = function()
 					require("harpoon.mark").add_file()
 				end,
