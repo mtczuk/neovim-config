@@ -86,6 +86,7 @@ return {
 					"*.dart",
 					"*.ts",
 					"*.vue",
+					"*.graphql",
 					"*.gradle",
 					"*.json",
 					"*.js",

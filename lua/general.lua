@@ -18,6 +18,9 @@ function M.setup()
 
 	vim.api.nvim_set_hl(0, "CursorLine", { underline = true })
 
+	vim.keymap.set("n", "<leader>gj", ":Gitsigns next_hunk<CR>")
+	vim.keymap.set("n", "<leader>gk", ":Gitsigns prev_hunk<CR>")
+
 	vim.keymap.set("n", "z", "zz", { noremap = true, silent = true })
 	vim.keymap.set("n", "<c-e>", "4<c-e>", { noremap = true, silent = true })
 	vim.keymap.set("n", "<c-y>", "4<c-y>", { noremap = true, silent = true })
