@@ -17,7 +17,6 @@ return {
 					"graphql",
 					"volar",
 					"lua_ls",
-					"html",
 				},
 				automatic_installation = true,
 			})
