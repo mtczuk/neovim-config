@@ -14,6 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("general").setup()
 
+if vim.g.neovide then
+	vim.g.neovide_scale_factor = 0.75
+end
+
 require("lazy").setup({
 	require("plugins.flutter"),
 	require("plugins.lsp"),
@@ -43,6 +47,7 @@ require("lazy").setup({
 	require("plugins.autopairs"),
 	require("plugins.tailwind"),
 	require("plugins.copilot"),
+	require("plugins.avante"),
 })
 
 vim.api.nvim_set_hl(0, "CursorLine", { underline = true })

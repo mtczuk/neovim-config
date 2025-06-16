@@ -94,4 +94,10 @@ return {
 		},
 		config = setup,
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			-- options
+		},
+	},
 }

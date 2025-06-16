@@ -1,6 +1,8 @@
 local M = {}
 
 function M.setup()
+	vim.o.shell = "powershell.exe"
+
 	vim.opt.mouse = "a"
 
 	vim.opt.clipboard = "unnamedplus"
